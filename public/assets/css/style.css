@@ -1,0 +1,40 @@
+body{
+    background-color:#555956;
+    }
+    
+    .container {
+        width: 90%;
+    }
+    .jumbotron {
+        font-family: 'Poiret One', cursive;
+        background: #000428;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
+        color: white; 
+    }
+    h4{
+        font-family: 'Noto Sans', sans-serif;
+    }
+    .text-center {
+        font-size: 68px;
+    }
+    .panel-title {
+        font-size: 26px;
+    }
+    #formHeader, #savedHeader{
+        font-family: 'Poiret One', cursive;
+        font-size: 26px;
+        color: #ffffff;
+        background: #000428;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
+    }
+    .btn-default{
+        color: #fff;
+        background-color: rgb(48, 125, 161);
+    }
+    a{
+        font-weight: bold;
+    }

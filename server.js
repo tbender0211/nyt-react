@@ -1,23 +1,47 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const logger = require("morgan");
 const mongoose = require("mongoose");
-const routes = require("./routes");
 const app = express();
-const PORT = process.env.PORT || 3001;
 
-// Define middleware here
-app.use(bodyParser.urlencoded({ extended: true }));
+// Run Morgan for Logging
+app.use(logger("dev"));
 app.use(bodyParser.json());
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+
+app.use(express.static("./public"));
+
+// Import the routes
+const routes = require("./controllers/articlesController");
+app.use("/", routes);
+
+// -------------------------------------------------
+
+const databaseUri = "mongodb://localhost/nytreact";
+
+if (process.env.MONGODB_URI) {
+  // executes only when deployed as Heroku App
+  mongoose.connect(process.env.MONGODB_URI);
+} else {
+  mongoose.connect(databaseUri);
 }
-// Add routes, both API and view
-app.use(routes);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/nytreact");
 
-app.listen(PORT, function() {
-    console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+const db = mongoose.connection;
+
+db.on("error", function(err) {
+  console.log("Mongoose Error: ", err);
 });
-  
+
+db.once("open", function() {
+  console.log("Mongoose connection successful.");
+});
+
+
+// Listen on port 8080
+const port = process.env.PORT || 8080; 
+app.listen(port, function() {
+  console.log("App is now running on port 8080!");
+});
