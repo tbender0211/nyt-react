@@ -1,5 +1,5 @@
 import React from "react";
-const helpers = require("../utils/helpers");
+const helpers = require("./utils/helpers");
 
 // Shows recent searches
 class Saved extends React.Component {

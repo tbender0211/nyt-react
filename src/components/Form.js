@@ -1,5 +1,5 @@
 import React from "react";
-const helpers = require("../utils/helpers");
+const helpers = require("./utils/helpers");
 
 
 // Create Form component
